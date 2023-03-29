@@ -19,7 +19,8 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
-    }
+    },
+    "typeRoots": ["./src/types"]
   },
   "include": [
     ".eslintrc.cjs",
@@ -27,7 +28,9 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",
-    "**/*.mjs"
+    "**/*.mjs",
+    "tailwind.config.cjs",
+    "tailwind.config.cjs"
   ],
   "exclude": ["node_modules"]
 }

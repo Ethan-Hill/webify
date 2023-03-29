@@ -18,5 +18,16 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+
+  images: {
+    domains: [
+      "i.scdn.co",
+      "mosaic.scdn.co",
+      "seed-mix-image.spotifycdn.com",
+      "wrapped-images.spotifycdn.com",
+      "lineup-images.scdn.co",
+      "blend-playlist-covers.spotifycdn.com",
+    ],
+  },
 };
 export default config;

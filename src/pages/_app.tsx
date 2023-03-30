@@ -2,8 +2,6 @@ import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 
-import { Header } from "~/components/master/header";
-
 import { Be_Vietnam_Pro } from "next/font/google";
 const BeVietnamPro = Be_Vietnam_Pro({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -11,6 +9,7 @@ const BeVietnamPro = Be_Vietnam_Pro({
 });
 
 import "~/styles/globals.css";
+import Transition from "~/components/misc/Transition";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -18,10 +17,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Header />
-      <main className={BeVietnamPro.className}>
-        <Component {...pageProps} />{" "}
-      </main>
+      <Transition>
+        <main className={BeVietnamPro.className}>
+          <Component {...pageProps} />
+        </main>
+      </Transition>{" "}
     </SessionProvider>
   );
 };

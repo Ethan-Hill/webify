@@ -12,19 +12,24 @@ const PlaylistItem: NextPage<Props> = (props) => {
 
   const playlistItem = {
     hidden: { opacity: 0, scale: 0.8 },
-    show: { opacity: 1, scale: 1 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      whileTap: {
+        scale: 1.2,
+      },
+    },
   };
 
   return (
     <motion.div
       variants={playlistItem}
       key={item.id}
-      className="rounded-xl bg-black bg-opacity-25 p-5 text-white transition hover:bg-opacity-50"
+      className="rounded-xl bg-black bg-opacity-25 text-white transition hover:bg-opacity-50"
     >
       <Link
-        target="_blank"
-        href={item.external_urls.spotify}
-        className="flex flex-col-reverse justify-between gap-2 md:flex-row md:items-center"
+        href={`/playlists/${item.id}`}
+        className="flex items-center justify-between gap-2 p-5"
       >
         <Image
           src={item.images[0]?.url || "/not-found.png"}
@@ -35,7 +40,7 @@ const PlaylistItem: NextPage<Props> = (props) => {
           blurDataURL={item.images[0]?.url || "/not-found.png"}
           className="h-32 w-32"
         />
-        <span className="text-xl font-bold md:text-right">{item.name}</span>
+        <span className="text-right text-xl font-bold">{item.name}</span>
       </Link>
     </motion.div>
   );

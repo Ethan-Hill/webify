@@ -9,9 +9,7 @@ export const Header = () => {
   const session = useSession();
 
   return (
-    <header
-      className={`absolute top-0 left-0 h-32 p-5 ${BeVietnamPro.className}`}
-    >
+    <header className={`absolute top-0 left-0 p-5 ${BeVietnamPro.className}`}>
       {session.data?.user ? (
         <div className="flex items-center gap-x-6">
           <Link href="/">

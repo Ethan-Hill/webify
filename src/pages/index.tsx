@@ -1,11 +1,22 @@
+import { motion } from "framer-motion";
 import { type NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { signIn, signOut } from "next-auth/react";
 import Head from "next/head";
-import Link from "next/link";
 
 const Home: NextPage = () => {
   const { data: session } = useSession();
+
+  const title = {
+    hidden: { opacity: 0, scale: 0.8 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
 
   return (
     <>
@@ -16,16 +27,18 @@ const Home: NextPage = () => {
       </Head>
       <section className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-r from-orange-400 to-rose-400">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
+          <motion.h1
+            initial="hidden"
+            animate="show"
+            variants={title}
+            className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]"
+          >
             <span className="text-white">Webify</span>
-          </h1>
+          </motion.h1>
 
           <div className="text-white">
             {session ? (
               <div className="flex justify-center">
-                <Link className="btn" href="/playlists">
-                  Playlists
-                </Link>
                 <button className="btn" onClick={() => signOut()}>
                   Logout
                 </button>

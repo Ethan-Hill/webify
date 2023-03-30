@@ -11,32 +11,18 @@ const BeVietnamPro = Be_Vietnam_Pro({
 });
 
 import "~/styles/globals.css";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
-  useEffect(() => {
-    router.isReady && setIsLoading(false);
-  }, []);
-
   return (
-    <>
-      {isLoading ? (
-        <p>loading...</p>
-      ) : (
-        <SessionProvider session={session}>
-          <Header />
-          <main className={BeVietnamPro.className}>
-            <Component {...pageProps} />{" "}
-          </main>
-        </SessionProvider>
-      )}
-    </>
+    <SessionProvider session={session}>
+      <Header />
+      <main className={BeVietnamPro.className}>
+        <Component {...pageProps} />{" "}
+      </main>
+    </SessionProvider>
   );
 };
 

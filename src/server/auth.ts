@@ -1,6 +1,6 @@
 import { type GetServerSidePropsContext } from "next";
 import { getServerSession, type NextAuthOptions } from "next-auth";
-import SpotifyProvider, { SpotifyProfile } from "next-auth/providers/spotify";
+import SpotifyProvider from "next-auth/providers/spotify";
 import { env } from "~/env.mjs";
 
 /**
@@ -19,14 +19,14 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
-    async jwt({ token, account }) {
+    jwt({ token, account }) {
       if (account) {
         token.refresh_token = account.refresh_token;
         token.access_token = account.access_token;
       }
       return token;
     },
-    async session({ session, token }) {
+    session({ session, token }) {
       session.user.refresh_token = token.refresh_token!;
       session.user.access_token = token.access_token!;
       return session;

@@ -19,7 +19,7 @@ const Playlists: NextPage<{
           <span className="text-white">Playlists</span>
         </h1>
 
-        <div className="container mx-auto mt-16 min-h-screen gap-12 px-4  ">
+        <div className="container mx-auto mt-16 gap-12 px-4  ">
           {userPlaylists ? <PlaylistContainer list={userPlaylists} /> : null}
         </div>
       </section>

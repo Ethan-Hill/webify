@@ -27,7 +27,7 @@ const Transition: NextPage<Props> = ({ children }: Props) => {
   const { asPath } = useRouter();
 
   return (
-    <div className="overflow-hidden bg-gradient-to-r from-orange-400 to-rose-400">
+    <div className="min-h-screen overflow-hidden bg-gradient-to-r from-orange-400 to-rose-400">
       <Header />
       <AnimatePresence initial={false} mode="wait">
         <motion.div

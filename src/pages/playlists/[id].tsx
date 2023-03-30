@@ -3,6 +3,8 @@ import { getToken } from "next-auth/jwt";
 import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
 
+import PlaylistDetails from "~/components/playlist/PlaylistDetails";
+
 interface Params extends ParsedUrlQuery {
   id: string;
 }
@@ -10,7 +12,7 @@ interface Params extends ParsedUrlQuery {
 import { getUserPlaylist } from "~/lib/spotify";
 
 const Playlist: NextPage<{
-  playlist: SpotifyApi.PlaylistObjectSimplified;
+  playlist: SpotifyApi.PlaylistObjectFull;
 }> = ({ playlist }) => {
   return (
     <>
@@ -21,11 +23,11 @@ const Playlist: NextPage<{
       </Head>
       <section className="pt-20">
         <h1 className="mt-12 text-center text-3xl font-extrabold tracking-tight text-white sm:text-[3rem]">
-          <span className="text-white">Playlists</span>
+          <span className="text-white">{playlist.name}</span>
         </h1>
 
         <div className="container mx-auto mt-16 min-h-screen gap-12 px-4  ">
-          {playlist ? <div>{playlist.name}</div> : <div>not here</div>}
+          <PlaylistDetails playlist={playlist} />
         </div>
       </section>
     </>
@@ -39,11 +41,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const token = await getToken({ req });
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const playlist: SpotifyApi.PlaylistObjectSimplified = await getUserPlaylist(
+  const playlist: SpotifyApi.PlaylistObjectFull = await getUserPlaylist(
     id,
     token?.access_token!
   );
-
   return {
     props: { playlist },
   };

@@ -15,9 +15,6 @@ const PlaylistItem: NextPage<Props> = (props) => {
     show: {
       opacity: 1,
       scale: 1,
-      whileTap: {
-        scale: 1.2,
-      },
     },
   };
 

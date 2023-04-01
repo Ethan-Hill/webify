@@ -47,13 +47,12 @@ export const authOptions: NextAuthOptions = {
               method: "POST",
             }
           );
-
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           const tokens: {
             access_token: string;
             token_type: string;
             expires_in: number;
             refresh_token: string | undefined;
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           } = await response.json();
 
           if (!response.ok) throw tokens;

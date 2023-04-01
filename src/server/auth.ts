@@ -1,5 +1,5 @@
 import { type GetServerSidePropsContext } from "next";
-import { getServerSession, TokenSet, type NextAuthOptions } from "next-auth";
+import { getServerSession, type NextAuthOptions } from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
 import { env } from "~/env.mjs";
 
@@ -53,6 +53,7 @@ export const authOptions: NextAuthOptions = {
             token_type: string;
             expires_in: number;
             refresh_token: string | undefined;
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           } = await response.json();
 
           if (!response.ok) throw tokens;

@@ -37,7 +37,7 @@ const PlaylistDetails: NextPage<Props> = (props) => {
       variants={container}
       initial="hidden"
       animate="show"
-      className="mx-auto grid grid-cols-1 gap-5 pb-5 text-white  md:w-3/4 md:grid-cols-2 xl:grid-cols-3"
+      className="mx-auto grid grid-cols-1 gap-5 pb-5 text-white  md:w-3/4 xl:grid-cols-3"
       transition={{
         staggerChildren: 0.35,
       }}

@@ -30,7 +30,7 @@ const PlaylistTracksContainer: NextPage<Props> = (props) => {
   return (
     <motion.div
       variants={container}
-      className="col-span-3 grid grid-cols-2 gap-2 rounded-xl bg-black bg-opacity-25 p-5 text-center text-white transition"
+      className="flex flex-col gap-2 rounded-xl bg-black bg-opacity-25 p-5 text-center text-white transition md:grid md:grid-cols-2 lg:col-span-3"
       transition={{
         staggerChildren: 0.1,
       }}

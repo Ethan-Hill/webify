@@ -17,7 +17,7 @@ const Pagination = ({
                 key={pageNumber}
                 onClick={() => handlePageChange(pageNumber)}
                 disabled={pageNumber === currentPage ? true : false}
-                className="pagination-btn mx-2 rounded bg-black bg-opacity-75 px-2 py-1 disabled:bg-opacity-25"
+                className="pagination-btn m-2 rounded bg-black bg-opacity-75 px-2 py-1 disabled:bg-opacity-25"
               >
                 {pageNumber}
               </button>

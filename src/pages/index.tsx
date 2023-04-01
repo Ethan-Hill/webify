@@ -37,7 +37,7 @@ const Home: NextPage = () => {
           </motion.h1>
 
           <div className="text-white">
-            {session ? (
+            {session?.user ? (
               <div className="flex justify-center">
                 <button className="btn" onClick={() => signOut()}>
                   Logout

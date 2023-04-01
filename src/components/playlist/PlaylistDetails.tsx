@@ -44,6 +44,7 @@ const PlaylistDetails: NextPage<Props> = (props) => {
     >
       <AnimatePresence>
         <motion.div
+          key="Tracks"
           variants={playlistDetail}
           className="flex min-h-[150px] flex-col rounded-xl bg-black bg-opacity-25 p-5 text-center text-white transition hover:bg-opacity-50"
         >
@@ -53,6 +54,7 @@ const PlaylistDetails: NextPage<Props> = (props) => {
           </div>
         </motion.div>
         <motion.div
+          key="Owner"
           variants={playlistDetail}
           className="flex min-h-[150px] flex-col rounded-xl bg-black bg-opacity-25 p-5 text-center text-white transition hover:bg-opacity-50"
         >
@@ -64,6 +66,7 @@ const PlaylistDetails: NextPage<Props> = (props) => {
           </div>
         </motion.div>
         <motion.div
+          key="Followers"
           variants={playlistDetail}
           className="flex min-h-[150px] flex-col rounded-xl bg-black bg-opacity-25 p-5 text-center text-white transition hover:bg-opacity-50"
         >

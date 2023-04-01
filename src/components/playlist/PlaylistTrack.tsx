@@ -28,7 +28,7 @@ const PlaylistTrack: NextPage<Props> = (props) => {
           height={64}
           src={track.track?.album.images[0]?.url! || "/not-found.png"}
           alt="Track album cover"
-          className="rounded"
+          className="h-16 w-16 rounded"
         />
 
         <div>

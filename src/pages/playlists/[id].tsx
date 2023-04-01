@@ -1,6 +1,6 @@
 import { type GetServerSideProps, type NextPage } from "next";
 import { getToken } from "next-auth/jwt";
-import { getSession, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
 import { useState } from "react";

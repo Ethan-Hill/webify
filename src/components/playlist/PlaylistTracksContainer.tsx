@@ -35,7 +35,7 @@ const PlaylistTracksContainer: NextPage<Props> = (props) => {
         staggerChildren: 0.1,
       }}
     >
-      {tracks.map((trackParent, index) => (
+      {tracks.map((trackParent) => (
         <PlaylistTrack key={trackParent.track?.id} track={trackParent} />
       ))}
 

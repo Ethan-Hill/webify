@@ -38,6 +38,7 @@ export async function getUserPlaylistTracks(
     }
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const data: SpotifyApi.PlaylistTrackResponse = await res.json();
 
   const tracks = data.items.map((item) => item);

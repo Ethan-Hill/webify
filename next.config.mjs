@@ -29,5 +29,8 @@ const config = {
       "blend-playlist-covers.spotifycdn.com",
     ],
   },
+  experimental: {
+    largePageDataBytes: 360,
+  },
 };
 export default config;

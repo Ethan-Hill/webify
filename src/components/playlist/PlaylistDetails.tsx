@@ -1,16 +1,19 @@
 import { type NextPage } from "next";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 
 import Counter from "~/components/misc/Counter";
-import PlaylistTrack from "./PlaylistTrack";
+import PlaylistTracksContainer from "./PlaylistTracksContainer";
 
 interface Props {
   playlist: SpotifyApi.PlaylistObjectFull;
+  totalPages: number;
+  page: number;
+  setTracksPage: (page: number) => void;
+  tracks: SpotifyApi.PlaylistTrackObject[];
 }
 
 const PlaylistDetails: NextPage<Props> = (props) => {
-  const { playlist } = props;
+  const { playlist, totalPages, page, setTracksPage, tracks } = props;
 
   const container = {
     hidden: {
@@ -42,47 +45,40 @@ const PlaylistDetails: NextPage<Props> = (props) => {
       <AnimatePresence>
         <motion.div
           variants={playlistDetail}
-          className="flex min-h-[212px] flex-col rounded-xl bg-black bg-opacity-25 p-5 text-center text-white transition hover:bg-opacity-50"
+          className="flex min-h-[150px] flex-col rounded-xl bg-black bg-opacity-25 p-5 text-center text-white transition hover:bg-opacity-50"
         >
-          <p className="text-3xl"> Number of tracks</p>
+          <p className="mb-3 text-xl"> Number of tracks</p>
           <div className="flex flex-grow items-center justify-center">
             <Counter from={0} to={playlist.tracks.total} />
           </div>
         </motion.div>
-
         <motion.div
           variants={playlistDetail}
-          className="flex min-h-[212px] flex-col rounded-xl bg-black bg-opacity-25 p-5 text-center text-white transition hover:bg-opacity-50"
+          className="flex min-h-[150px] flex-col rounded-xl bg-black bg-opacity-25 p-5 text-center text-white transition hover:bg-opacity-50"
         >
-          <p className="text-3xl">Playlist Owner</p>
+          <p className="mb-3 text-xl">Playlist Owner</p>
           <div className="flex flex-grow items-center justify-center">
             <p className="whitespace-pre-wrap break-words text-4xl font-bold ">
               {playlist.owner.display_name}
             </p>
           </div>
         </motion.div>
-
         <motion.div
           variants={playlistDetail}
-          className="flex min-h-[212px] flex-col rounded-xl bg-black bg-opacity-25 p-5 text-center text-white transition hover:bg-opacity-50"
+          className="flex min-h-[150px] flex-col rounded-xl bg-black bg-opacity-25 p-5 text-center text-white transition hover:bg-opacity-50"
         >
-          <p className="text-3xl"> Number of followers</p>
+          <p className="mb-3 text-xl"> Number of followers</p>
           <div className="flex flex-grow items-center justify-center">
             <Counter from={0} to={playlist.followers.total} />
           </div>
         </motion.div>
 
-        <motion.div
-          variants={container}
-          className="col-span-3 flex flex-col gap-y-2 rounded-xl bg-black bg-opacity-25 p-5 text-center text-white transition"
-          transition={{
-            staggerChildren: 0.1,
-          }}
-        >
-          {playlist.tracks.items.map((trackParent) => (
-            <PlaylistTrack key={trackParent.track?.id} track={trackParent} />
-          ))}
-        </motion.div>
+        <PlaylistTracksContainer
+          tracks={tracks}
+          totalPages={totalPages}
+          page={page}
+          setTracksPage={setTracksPage}
+        />
       </AnimatePresence>
     </motion.div>
   );

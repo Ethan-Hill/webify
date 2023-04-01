@@ -11,10 +11,9 @@ const PlaylistTrack: NextPage<Props> = (props) => {
   const { track } = props;
 
   const playlistTrack = {
-    hidden: { opacity: 0, scale: 0.8 },
+    hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      scale: 1,
     },
   };
 
@@ -22,13 +21,14 @@ const PlaylistTrack: NextPage<Props> = (props) => {
     <Link target="_blank" href={track.track?.external_urls.spotify!}>
       <motion.div
         variants={playlistTrack}
-        className="flex items-center gap-5 rounded-xl bg-black bg-opacity-50 p-5 transition duration-[25ms] hover:bg-opacity-40"
+        className="flex items-center gap-5 rounded-xl bg-black bg-opacity-50 p-3 transition duration-[25ms] hover:bg-opacity-40"
       >
         <Image
           width={64}
           height={64}
-          src={track.track?.album.images[0]?.url!}
+          src={track.track?.album.images[0]?.url! || "/not-found.png"}
           alt="Track album cover"
+          className="rounded"
         />
 
         <div>

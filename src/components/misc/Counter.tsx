@@ -18,7 +18,7 @@ const Counter = ({ from, to }: { from: number; to: number }) => {
     return () => controls.stop();
   }, [from, to]);
 
-  return <span className="text-8xl font-bold" ref={nodeRef} />;
+  return <span className="text-6xl font-bold" ref={nodeRef} />;
 };
 
 export default Counter;

@@ -48,14 +48,19 @@ export const authOptions: NextAuthOptions = {
             }
           );
 
-          const tokens: TokenSet = await response.json();
+          const tokens: {
+            access_token: string;
+            token_type: string;
+            expires_in: number;
+            refresh_token: string | undefined;
+          } = await response.json();
 
           if (!response.ok) throw tokens;
 
           return {
             ...token, // Keep the previous token properties
             access_token: tokens.access_token,
-            //@ts-ignore
+
             expires_at: Math.floor(Date.now() / 1000 + tokens.expires_in),
             // Fall back to old refresh token, but note that
             // many providers may only allow using a refresh token once.

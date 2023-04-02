@@ -43,10 +43,12 @@ export const authOptions: NextAuthOptions = {
               },
               body: new URLSearchParams({
                 grant_type: "refresh_token",
+                refresh_token: token.refresh_token!,
               }),
               method: "POST",
             }
           );
+
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           const tokens: {
             access_token: string;

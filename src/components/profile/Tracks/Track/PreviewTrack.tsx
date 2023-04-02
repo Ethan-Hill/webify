@@ -13,27 +13,27 @@ const PreviewTrack: NextPage<Props> = (props) => {
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const pauseAll = (): void => {
+  const pauseAll = () => {
     const audioPlayers = [...document.getElementsByTagName("audio")];
 
     audioPlayers.forEach((player) => {
-      player.pause();
+      void player.pause();
     });
   };
 
-  const handlePlay = (): void => {
-    pauseAll();
-    setIsPlaying(true);
-    audioRef.current!.play();
+  const handlePlay = () => {
+    void pauseAll();
+    void setIsPlaying(true);
+    void audioRef.current!.play();
   };
 
-  const handlePause = (): void => {
-    setIsPlaying(false);
-    audioRef.current!.pause();
+  const handlePause = () => {
+    void setIsPlaying(false);
+    void audioRef.current!.pause();
   };
 
-  const handleEnded = (): void => {
-    setIsPlaying(false);
+  const handleEnded = () => {
+    void setIsPlaying(false);
   };
 
   useEffect(() => {
@@ -41,12 +41,12 @@ const PreviewTrack: NextPage<Props> = (props) => {
 
     audio.volume = 0.1;
 
-    const updateProgress = (): void => {
+    const updateProgress = () => {
       const duration = audio.duration;
       const currentTime = audio.currentTime;
       const progress = (currentTime / duration) * 100;
 
-      setProgress(progress);
+      void setProgress(progress);
     };
 
     audio.addEventListener("timeupdate", updateProgress);

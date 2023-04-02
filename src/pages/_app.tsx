@@ -16,6 +16,7 @@ const BeVietnamPro = Be_Vietnam_Pro({
 
 // CSS imports
 import "~/styles/globals.css";
+import "~/styles/nprogress.min.css";
 
 // Components
 import Transition from "~/components/misc/Transition";

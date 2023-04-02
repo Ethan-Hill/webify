@@ -41,7 +41,7 @@ const PreviewTrack: NextPage<Props> = (props) => {
 
     audio.volume = 0.1;
 
-    const updateProgress = () => {
+    const updateProgress = (): void => {
       const duration = audio.duration;
       const currentTime = audio.currentTime;
       const progress = (currentTime / duration) * 100;

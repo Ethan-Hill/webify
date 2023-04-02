@@ -21,8 +21,8 @@ const PreviewTrack: NextPage<Props> = (props) => {
     });
   };
 
-  const handlePlay = () => {
-    pauseAll().then(() => {
+  const handlePlay = async () => {
+    await pauseAll().then(() => {
       setIsPlaying(true);
       audioRef.current!.play();
     });

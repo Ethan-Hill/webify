@@ -3,14 +3,16 @@ import { NextPage } from "next";
 
 import ProfileDetails from "./Details/ProfileDetails";
 import ProfileTopTracks from "./Tracks/ProfileTopTracks";
+import ProfileTopArtists from "./Artists/ProfileTopArtists";
 
 interface Props {
   profile: SpotifyApi.UserProfileResponse;
   topTracks: SpotifyApi.UsersTopTracksResponse;
+  topArtists: SpotifyApi.UsersTopArtistsResponse;
 }
 
 const ProfileContainer: NextPage<Props> = (props) => {
-  const { profile, topTracks } = props;
+  const { profile, topTracks, topArtists } = props;
 
   const container = {
     hidden: {
@@ -36,6 +38,7 @@ const ProfileContainer: NextPage<Props> = (props) => {
           <div className="mx-auto flex flex-col gap-2 rounded-xl text-white ">
             <ProfileDetails profile={profile} />
             <ProfileTopTracks topTracks={topTracks} />
+            <ProfileTopArtists topArtists={topArtists} />
           </div>
         </AnimatePresence>
       </motion.div>

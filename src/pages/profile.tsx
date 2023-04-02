@@ -2,15 +2,20 @@ import { GetServerSideProps, NextPage } from "next";
 import { getToken } from "next-auth/jwt";
 import Head from "next/head";
 import ProfileContainer from "~/components/profile/ProfileContainer";
-import { getUserProfile, getUserTopTracks } from "~/lib/spotify";
+import {
+  getUserProfile,
+  getUserTopArtists,
+  getUserTopTracks,
+} from "~/lib/spotify";
 
 interface Props {
   profile: SpotifyApi.UserProfileResponse;
   topTracks: SpotifyApi.UsersTopTracksResponse;
+  topArtists: SpotifyApi.UsersTopArtistsResponse;
 }
 
 const Profile: NextPage<Props> = (props) => {
-  const { profile, topTracks } = props;
+  const { profile, topTracks, topArtists } = props;
 
   return (
     <>
@@ -20,7 +25,11 @@ const Profile: NextPage<Props> = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="flex min-h-screen flex-col items-center justify-center">
-        <ProfileContainer profile={profile} topTracks={topTracks} />
+        <ProfileContainer
+          profile={profile}
+          topTracks={topTracks}
+          topArtists={topArtists}
+        />
       </section>
     </>
   );
@@ -42,8 +51,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     token?.access_token!
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const topArtists: SpotifyApi.UserProfileResponse = await getUserTopArtists(
+    token?.access_token!
+  );
+
   return {
-    props: { profile, topTracks },
+    props: { profile, topTracks, topArtists },
   };
 };
 

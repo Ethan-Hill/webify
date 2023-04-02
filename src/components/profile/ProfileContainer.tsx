@@ -29,7 +29,7 @@ const ProfileContainer: NextPage<Props> = (props) => {
         variants={container}
         initial="hidden"
         animate="show"
-        className="w-full"
+        className="container mx-auto mt-16 gap-12 px-4  "
         transition={{
           staggerChildren: 0.1,
         }}

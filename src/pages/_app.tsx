@@ -27,11 +27,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
   pageProps: { session, ...pageProps },
 }) => {
   useEffect(() => {
-    Router.events.on("routeChangeStart", (url) => {
+    Router.events.on("routeChangeStart", () => {
       Nprogress.start();
     });
 
-    Router.events.on("routeChangeComplete", (url) => {
+    Router.events.on("routeChangeComplete", () => {
       Nprogress.done(false);
     });
   }, [Router]);

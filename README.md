@@ -1,4 +1,4 @@
-# Spotify Playlist Viewer
+# Webify
 
 This is a web app built with Next.js, TypeScript, and styled with TailwindCSS that integrates with the Spotify Web API to display information about your playlists and profile.
 

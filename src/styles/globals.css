@@ -7,3 +7,28 @@
     @apply m-2 block rounded-lg border border-white px-4 py-3 transition-colors hover:bg-white hover:text-stone-800;
   }
 }
+.circle {
+  stroke: #1db954;
+  transition: stroke-dasharray 1s linear;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+}
+
+.previewButton {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}

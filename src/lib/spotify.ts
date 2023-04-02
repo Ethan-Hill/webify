@@ -1,6 +1,8 @@
 const PLAYLISTS_ENDPOINT = "https://api.spotify.com/v1/me/playlists";
 const PLAYLIST_ENDPOINT = "https://api.spotify.com/v1/playlists";
 const PROFILE_ENDPOINT = "https://api.spotify.com/v1/users";
+const PROFILE_TRACKS_ENDPOINT =
+  "https://api.spotify.com/v1/me/top/tracks?limit=10";
 
 export async function getUserPlaylists(access_token: string) {
   const res = await fetch(PLAYLISTS_ENDPOINT, {
@@ -54,5 +56,14 @@ export async function getUserProfile(id: string, access_token: string) {
     },
   });
 
+  return res.json();
+}
+
+export async function getUserTopTracks(access_token: string) {
+  const res = await fetch(PROFILE_TRACKS_ENDPOINT, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
   return res.json();
 }

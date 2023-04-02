@@ -30,7 +30,7 @@ const config = {
     ],
   },
   experimental: {
-    largePageDataBytes: 360,
+    largePageDataBytes: 1000 * 50,
   },
 };
 export default config;

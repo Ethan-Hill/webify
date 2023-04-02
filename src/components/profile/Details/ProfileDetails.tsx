@@ -1,12 +1,8 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { GetServerSideProps, NextPage } from "next";
-import { getToken } from "next-auth/jwt";
-import Head from "next/head";
+import { motion } from "framer-motion";
+import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
 import Counter from "~/components/misc/Counter";
-import { getUserProfile } from "~/lib/spotify";
 
 interface Props {
   profile: SpotifyApi.UserProfileResponse;

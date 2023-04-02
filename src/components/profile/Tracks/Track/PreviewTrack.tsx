@@ -13,7 +13,7 @@ const PreviewTrack: NextPage<Props> = (props) => {
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const pauseAll = () => {
+  const pauseAll = (): void => {
     const audioPlayers = [...document.getElementsByTagName("audio")];
 
     audioPlayers.forEach((player) => {
@@ -21,18 +21,18 @@ const PreviewTrack: NextPage<Props> = (props) => {
     });
   };
 
-  const handlePlay = () => {
+  const handlePlay = (): void => {
     pauseAll();
     setIsPlaying(true);
     audioRef.current!.play();
   };
 
-  const handlePause = () => {
+  const handlePause = (): void => {
     setIsPlaying(false);
     audioRef.current!.pause();
   };
 
-  const handleEnded = () => {
+  const handleEnded = (): void => {
     setIsPlaying(false);
   };
 

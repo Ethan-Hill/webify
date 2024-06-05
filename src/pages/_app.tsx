@@ -34,7 +34,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
     Router.events.on("routeChangeComplete", () => {
       Nprogress.done(false);
     });
-  }, [Router]);
+  }, []);
 
   return (
     <SessionProvider session={session}>

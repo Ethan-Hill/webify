@@ -27,6 +27,9 @@ const config = {
       "wrapped-images.spotifycdn.com",
       "lineup-images.scdn.co",
       "blend-playlist-covers.spotifycdn.com",
+      "image-cdn-ak.spotifycdn.com",
+      "i2o.scdn.co",
+      "dailymix-images.scdn.co",
     ],
   },
   experimental: {

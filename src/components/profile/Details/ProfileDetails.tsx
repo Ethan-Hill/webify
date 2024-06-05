@@ -33,11 +33,11 @@ const ProfileDetails: NextPage<Props> = (props) => {
         <Image
           src={
             profile.images!.length > 0
-              ? profile.images![0]!.url
+              ? profile.images![1]!.url
               : "/not-found.png"
           }
-          width={160}
-          height={160}
+          width={208}
+          height={208}
           alt="Spotify profile image"
           className=" mr-4 h-auto w-52 rounded-md"
           priority
